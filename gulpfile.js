@@ -6,7 +6,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const fileinclude = require('gulp-file-include');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
-const webserver = require('webserver').create();
+const webserver = require('gulp-webserver');
 const rimraf = require('rimraf');
 const comments = require('gulp-header-comment');
 
