@@ -6,6 +6,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const fileinclude = require('gulp-file-include');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
+const webserver = require('webserver')
 const rimraf = require('rimraf');
 const comments = require('gulp-header-comment');
 
@@ -120,6 +121,17 @@ gulp.task('watch:build', function () {
   gulp.watch(path.src.images, gulp.series('images:build'));
   gulp.watch(path.src.plugins, gulp.series('plugins:build'));
 });
+
+
+gulp.task('webserver', function() {
+  gulp.src('app')
+    .pipe(webserver({
+      port: 3000,
+      livereload: true,
+      host: '0.0.0.0'
+    }));
+});
+
 
 gulp.task('browser-sync', function(){
   browserSync.init(null,{
