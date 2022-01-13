@@ -170,6 +170,7 @@ gulp.task('default', gulp.series(
       browserSync.init({
         server: {
           baseDir: path.build.dirDev,
+          open: false,
         }
       });
     })
