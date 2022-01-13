@@ -7,6 +7,7 @@ const fileinclude = require('gulp-file-include');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
 const webserver = require('gulp-webserver');
+const php = require('gulp-connect-php');
 const rimraf = require('rimraf');
 const comments = require('gulp-header-comment');
 
@@ -99,7 +100,24 @@ gulp.task('plugins:build', function () {
     }));
 });
 
+gulp.task('php', function() {
+    connectPHP.server({
+        base: "src",
+        port: 8010,
+        hostname:"0.0.0.0",
+        keepalive: true
+    });
+});
 
+//Apply and configure BrowserSync on Port 8080 to proxy the php instance on Port 8010
+gulp.task('browser-sync',['php'], function() {
+    browserSync.init({
+        proxy: '127.0.0.1:8010',
+        port: 8080,
+        open: true,
+        notify: false
+    });
+});
 
 // Other files like favicon, php, sourcele-icon on root directory
 gulp.task('others:build', function () {
