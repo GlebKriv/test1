@@ -243,7 +243,7 @@ gulp.task('netlify', gulp.series(
   'js:netlify:build',
   'scss:netlify:build',
   'images:netlify:build',
-  'plugins:netlify:build'
-  'browserSync:netlify:build'
+  'plugins:netlify:build',
+  'browserSync:netlify:build',
   'webserver:netlify:build'
 ));
