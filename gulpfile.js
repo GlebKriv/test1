@@ -98,14 +98,7 @@ gulp.task('plugins:build', function () {
     }));
 });
 
-gulp.task('browser-sync', function(){
-  browserSync.init(null,{
-    open: false,
-    server: {
-      baseDir: 'dist'
-    }
-  });
-});
+
 
 // Other files like favicon, php, sourcele-icon on root directory
 gulp.task('others:build', function () {
@@ -126,6 +119,15 @@ gulp.task('watch:build', function () {
   gulp.watch(path.src.js, gulp.series('js:build'));
   gulp.watch(path.src.images, gulp.series('images:build'));
   gulp.watch(path.src.plugins, gulp.series('plugins:build'));
+});
+
+gulp.task('browser-sync', function(){
+  browserSync.init(null,{
+    open: false,
+    server: {
+      baseDir: '0.0.0.0:3000'
+    }
+  });
 });
 
 // Build Task
