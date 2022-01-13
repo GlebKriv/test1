@@ -120,7 +120,6 @@ gulp.task('clean', function (cb) {
 
 // Watch Task
 gulp.task('watch:build', function () {
-  gulp.start(['build','browser-sync']);
   gulp.watch(path.src.html, gulp.series('html:build'));
   gulp.watch(path.src.htminc, gulp.series('html:build'));
   gulp.watch(path.src.scss, gulp.series('scss:build'));
