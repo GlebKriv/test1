@@ -125,7 +125,7 @@ gulp.task('watch:build', function () {
 
 gulp.task('webserver', function() {
   gulp.src('app')
-    .pipe(gulp.dest({
+    .pipe(webserver({
       port: 3000,
       livereload: true,
       host: '0.0.0.0'
