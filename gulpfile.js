@@ -155,6 +155,19 @@ gulp.task('browser-sync', function () {
   });
 });
 
+function watch() {
+   browserSync.init({
+      server: {
+         baseDir: './src/'
+      }
+   });
+   gulp.watch('./src/assets/sass/**/*.scss', style);
+   gulp.watch(['./src/assets/js/**/*.js','!./src/assets/js/main.js'], concatjs);
+   gulp.watch('./src/**/*.html').on('change', browserSync.reload);
+   gulp.watch('./src/**/*.php').on('change', browserSync.reload);
+}
+exports.watch = watch;
+
 // Build Task
 gulp.task('default', gulp.series(
   'clean',
