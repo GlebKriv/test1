@@ -128,6 +128,8 @@ gulp.task('webserver', function() {
     .pipe(webserver({
       port: 3000,
       livereload: true,
+      directoryListing: true,
+      open: true', 
       host: '0.0.0.0'
     }));
 });
