@@ -225,6 +225,18 @@ gulp.task('others:netlify:build', function () {
     .pipe(gulp.dest(path.build.dirNetlify))
 });
 
+// Other files like favicon, php, apple-icon on root directory
+gulp.task('browserSync:netlify:build', function () {
+  return gulp.src(path.src.others)
+    .pipe(gulp.dest(path.build.dirNetlify))
+});
+
+// Other files like favicon, php, apple-icon on root directory
+gulp.task('webserver:netlify:build', function () {
+  return gulp.src(path.src.others)
+    .pipe(gulp.dest(path.build.dirNetlify))
+});
+
 // Build Task
 gulp.task('netlify', gulp.series(
   'html:netlify:build',
@@ -232,4 +244,6 @@ gulp.task('netlify', gulp.series(
   'scss:netlify:build',
   'images:netlify:build',
   'plugins:netlify:build'
+  'browserSync:netlify:build'
+  'webserver:netlify:build'
 ));
