@@ -134,12 +134,24 @@ gulp.task('webserver', function() {
 });
 
 
-gulp.task('browser-sync', function(){
-  browserSync.init(null,{
+gulp.task('browser-sync', function () {
+  browserSync({
+    logPrefix: 'Your Project',
+    host: 'site1.domain.dev',
+    port: 3060,
     open: false,
-    server: {
-      baseDir: '0.0.0.0:3000'
-    }
+    notify: false,
+    ghost: false,
+
+    // Change this property with files of your project
+    // that you want to refresh the page on changes.
+    files: [
+      'public/css/**.min.css',
+      'public/js/**.min.js',
+      'app/**/*.php',
+      'index.php',
+      '.htaccess'
+    ]
   });
 });
 
