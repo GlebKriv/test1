@@ -5,7 +5,7 @@ const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const fileinclude = require('gulp-file-include');
 const autoprefixer = require('gulp-autoprefixer');
-const bs = require('browser-sync').create();
+const browserSync = require('browser-sync').create();
 const rimraf = require('rimraf');
 const comments = require('gulp-header-comment');
 
@@ -39,7 +39,7 @@ gulp.task('html:build', function () {
     GITHUB: https://github.com/themefisher/
     `))
     .pipe(gulp.dest(path.build.dirDev))
-    .pipe(bs.reload({
+    .pipe(browserSync.reload({
       stream: true
     }));
 });
@@ -60,7 +60,7 @@ gulp.task('scss:build', function () {
     GITHUB: https://github.com/themefisher/
     `))
     .pipe(gulp.dest(path.build.dirDev + 'css/'))
-    .pipe(bs.reload({
+    .pipe(browserSync.reload({
       stream: true
     }));
 });
@@ -75,7 +75,7 @@ gulp.task('js:build', function () {
   GITHUB: https://github.com/themefisher/
   `))
     .pipe(gulp.dest(path.build.dirDev + 'js/'))
-    .pipe(bs.reload({
+    .pipe(browserSync.reload({
       stream: true
     }));
 });
@@ -84,7 +84,7 @@ gulp.task('js:build', function () {
 gulp.task('images:build', function () {
   return gulp.src(path.src.images)
     .pipe(gulp.dest(path.build.dirDev + 'images/'))
-    .pipe(bs.reload({
+    .pipe(browserSync.reload({
       stream: true
     }));
 });
@@ -93,7 +93,7 @@ gulp.task('images:build', function () {
 gulp.task('plugins:build', function () {
   return gulp.src(path.src.plugins)
     .pipe(gulp.dest(path.build.dirDev + 'plugins/'))
-    .pipe(bs.reload({
+    .pipe(browserSync.reload({
       stream: true
     }));
 });
@@ -141,7 +141,7 @@ gulp.task('default', gulp.series(
   gulp.parallel(
     'watch:build',
     function () {
-      bs.init({
+      browserSync.init({
         server: {
           baseDir: path.build.dirDev,
         }
